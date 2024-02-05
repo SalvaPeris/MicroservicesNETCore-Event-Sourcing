@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Microservices.Posts.Commands.Domain\Microservices.Posts.Commands.Domain.csproj" />
     <ProjectReference Include="..\Microservices.Posts.CQRS\Microservices.Posts.CQRS.csproj" />
     <ProjectReference Include="..\Microservices.Posts.Queries.Domain\Microservices.Posts.Queries.Domain.csproj" />
   </ItemGroup>
