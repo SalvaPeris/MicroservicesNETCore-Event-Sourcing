@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  microservices.posts.commands.api:
+    image: ${DOCKER_REGISTRY-}microservicespostscommandsapi
+    build:
+      context: .
+      dockerfile: Microservices.Posts.Commands.Api/Dockerfile
+  microservices.posts.queries.api:
+    image: ${DOCKER_REGISTRY-}microservicespostsqueriesapi
+    build:
+      context: .
+      dockerfile: Microservices.Posts.Queries.Api/Dockerfile
+

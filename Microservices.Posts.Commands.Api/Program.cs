@@ -1,18 +1,24 @@
+using Confluent.Kafka;
 using Microservices.Posts.Commands.Api.Commands;
 using Microservices.Posts.Commands.Domain.Aggregates;
 using Microservices.Posts.Commands.Infrastructure.Config;
 using Microservices.Posts.Commands.Infrastructure.Dispatchers;
 using Microservices.Posts.Commands.Infrastructure.Handlers;
+using Microservices.Posts.Commands.Infrastructure.Producers;
 using Microservices.Posts.Commands.Infrastructure.Repositories;
 using Microservices.Posts.Commands.Infrastructure.Stores;
 using Microservices.Posts.CQRS.Domain;
 using Microservices.Posts.CQRS.Handlers;
 using Microservices.Posts.CQRS.Infrastructure;
+using Microservices.Posts.CQRS.Producers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
+builder.Services.Configure<ProducerConfig>(builder.Configuration.GetSection(nameof(ProducerConfig)));
+
 builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();
+builder.Services.AddScoped<IEventProducer, EventProducer>();
 builder.Services.AddScoped<IEventStore, EventStore>();
 builder.Services.AddScoped<IEventSourcingHandler<PostAggregate>, EventSourcingHandler>();
 builder.Services.AddScoped<ICommandHandler, CommandHandler>();
