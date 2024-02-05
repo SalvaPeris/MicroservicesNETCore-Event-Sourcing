@@ -8,7 +8,7 @@ namespace Microservices.Posts.Common.Events
         {
         }
 
-        public string? CommentId { get; set; }
+        public Guid CommentId { get; set; }
         public string? Comment { get; set; }
         public string? Username { get; set; }
         public DateTime? CommentDate { get; set; }
