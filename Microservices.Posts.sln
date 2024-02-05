@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Posts.Queries.Api", "Microservices.Posts.Queries.Api\Microservices.Posts.Queries.Api.csproj", "{F5E9B6D4-EEC1-4CEA-B530-01A3D2037B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Posts.Commands.Api", "Microservices.Posts.Commands.Api\Microservices.Posts.Commands.Api.csproj", "{FC598434-7D52-40BB-942C-B72668B7B57B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Queries", "Microservices.Posts.Queries", "{4115C879-2B5C-47EC-ABF5-D42183BE04CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Queries.Api", "Microservices.Posts.Queries.Api", "{4976D329-F0DC-4B5D-AB33-7A7E80B9F971}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Queries.Domain", "Microservices.Posts.Queries.Domain", "{7336CD1E-8D4C-46BD-A2AE-D4D8F88E414F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Queries.Infrastructure", "Microservices.Posts.Queries.Infrastructure", "{22A4BDD9-721C-46B1-839A-3C6C00BD38A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Commands", "Microservices.Posts.Commands", "{AADDC0B5-CEFF-4787-BB9F-A9724050F425}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Commands.Api", "Microservices.Posts.Commands.Api", "{3DE59D3C-E3EF-4BD7-B35A-C131A0EBCEE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Commands.Domain", "Microservices.Posts.Commands.Domain", "{42E21B83-3D1E-45B4-BC33-DACB03F22EDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Commands.Infrastructure", "Microservices.Posts.Commands.Infrastructure", "{F8E5BC55-4BE0-4F8F-B4F9-30B4405DB1AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices.Posts.Core", "Microservices.Posts.Core", "{D922CE98-747B-4699-96EF-C57314A018C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Posts.CQRS", "Microservices.Posts.CQRS\Microservices.Posts.CQRS.csproj", "{F60CB9E0-D903-4029-9D89-0E8DFD4229B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Posts.Commands.Domain", "Microservices.Posts.Commands.Domain\Microservices.Posts.Commands.Domain.csproj", "{40B79BBD-F488-44F1-AA8A-6E56DA58CD3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Posts.Commands.Infrastructure", "Microservices.Posts.Commands.Infrastructure\Microservices.Posts.Commands.Infrastructure.csproj", "{1626D46F-ACD3-4192-A9BC-7617E6C39C71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5E9B6D4-EEC1-4CEA-B530-01A3D2037B8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E9B6D4-EEC1-4CEA-B530-01A3D2037B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E9B6D4-EEC1-4CEA-B530-01A3D2037B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E9B6D4-EEC1-4CEA-B530-01A3D2037B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC598434-7D52-40BB-942C-B72668B7B57B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC598434-7D52-40BB-942C-B72668B7B57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC598434-7D52-40BB-942C-B72668B7B57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC598434-7D52-40BB-942C-B72668B7B57B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F60CB9E0-D903-4029-9D89-0E8DFD4229B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60CB9E0-D903-4029-9D89-0E8DFD4229B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60CB9E0-D903-4029-9D89-0E8DFD4229B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60CB9E0-D903-4029-9D89-0E8DFD4229B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B79BBD-F488-44F1-AA8A-6E56DA58CD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B79BBD-F488-44F1-AA8A-6E56DA58CD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B79BBD-F488-44F1-AA8A-6E56DA58CD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B79BBD-F488-44F1-AA8A-6E56DA58CD3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1626D46F-ACD3-4192-A9BC-7617E6C39C71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1626D46F-ACD3-4192-A9BC-7617E6C39C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1626D46F-ACD3-4192-A9BC-7617E6C39C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1626D46F-ACD3-4192-A9BC-7617E6C39C71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5E9B6D4-EEC1-4CEA-B530-01A3D2037B8B} = {4976D329-F0DC-4B5D-AB33-7A7E80B9F971}
+		{FC598434-7D52-40BB-942C-B72668B7B57B} = {3DE59D3C-E3EF-4BD7-B35A-C131A0EBCEE8}
+		{4976D329-F0DC-4B5D-AB33-7A7E80B9F971} = {4115C879-2B5C-47EC-ABF5-D42183BE04CE}
+		{7336CD1E-8D4C-46BD-A2AE-D4D8F88E414F} = {4115C879-2B5C-47EC-ABF5-D42183BE04CE}
+		{22A4BDD9-721C-46B1-839A-3C6C00BD38A9} = {4115C879-2B5C-47EC-ABF5-D42183BE04CE}
+		{3DE59D3C-E3EF-4BD7-B35A-C131A0EBCEE8} = {AADDC0B5-CEFF-4787-BB9F-A9724050F425}
+		{42E21B83-3D1E-45B4-BC33-DACB03F22EDD} = {AADDC0B5-CEFF-4787-BB9F-A9724050F425}
+		{F8E5BC55-4BE0-4F8F-B4F9-30B4405DB1AB} = {AADDC0B5-CEFF-4787-BB9F-A9724050F425}
+		{F60CB9E0-D903-4029-9D89-0E8DFD4229B0} = {D922CE98-747B-4699-96EF-C57314A018C8}
+		{40B79BBD-F488-44F1-AA8A-6E56DA58CD3D} = {42E21B83-3D1E-45B4-BC33-DACB03F22EDD}
+		{1626D46F-ACD3-4192-A9BC-7617E6C39C71} = {F8E5BC55-4BE0-4F8F-B4F9-30B4405DB1AB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {891582BC-F200-4582-89C6-2478F6843966}
+	EndGlobalSection
+EndGlobal
