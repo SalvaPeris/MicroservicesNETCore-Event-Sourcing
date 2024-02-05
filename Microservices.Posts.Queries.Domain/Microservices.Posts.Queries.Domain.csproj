@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Microservices.Posts.Common\Microservices.Posts.Common.csproj" />
+    <ProjectReference Include="..\Microservices.Posts.CQRS\Microservices.Posts.CQRS.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microservices.Posts.Common\Microservices.Posts.Common.csproj" />
+    <ProjectReference Include="..\Microservices.Posts.CQRS\Microservices.Posts.CQRS.csproj" />
+    <ProjectReference Include="..\Microservices.Posts.Queries.Domain\Microservices.Posts.Queries.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

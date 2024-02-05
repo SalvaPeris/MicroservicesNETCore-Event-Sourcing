@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.23.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microservices.Posts.CQRS\Microservices.Posts.CQRS.csproj" />
+    <ProjectReference Include="..\Microservices.Posts.Queries.Domain\Microservices.Posts.Queries.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

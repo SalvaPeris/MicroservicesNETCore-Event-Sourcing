@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Microservices.Posts.Commands.Infrastructure\Microservices.Posts.Commands.Infrastructure.csproj" />
     <ProjectReference Include="..\Microservices.Posts.CQRS\Microservices.Posts.CQRS.csproj" />
   </ItemGroup>
 
