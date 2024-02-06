@@ -35,6 +35,15 @@ services:
         - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
     depends_on:
         - zookeeper
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu 
+    environment:
+      SA_PASSWORD: "SmPA$$06500"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    restart: always
+    ports:
+      - "1433:1433"
   microservices.posts.queries.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

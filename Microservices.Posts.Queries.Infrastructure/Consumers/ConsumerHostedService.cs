@@ -34,7 +34,6 @@ namespace Microservices.Posts.Queries.Infrastructure.Consumers
         public Task StopAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Event consumer service stopped.");
-
             return Task.CompletedTask;
         }
     }

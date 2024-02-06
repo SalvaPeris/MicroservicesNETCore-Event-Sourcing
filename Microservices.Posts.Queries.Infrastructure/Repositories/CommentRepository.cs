@@ -1,6 +1,7 @@
 ﻿using Microservices.Posts.Queries.Domain.Entities;
 using Microservices.Posts.Queries.Domain.Repositories;
 using Microservices.Posts.Queries.Infrastructure.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace Microservices.Posts.Queries.Infrastructure.Repositories
 {
@@ -32,7 +33,7 @@ namespace Microservices.Posts.Queries.Infrastructure.Repositories
             _ = await context.SaveChangesAsync();
         }
 
-        public async Task<CommentEntity> GetByIdAsync(Guid commentId)
+        public async Task<CommentEntity?> GetByIdAsync(Guid commentId)
         {
             using DatabaseContext context = _contextFactory.CreateDbContext();
             return await context.Comments.FirstOrDefaultAsync(x => x.CommentId == commentId);

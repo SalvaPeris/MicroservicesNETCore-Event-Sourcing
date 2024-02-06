@@ -6,7 +6,7 @@ namespace Microservices.Posts.Queries.Domain.Repositories
     {
         Task CreateAsync(CommentEntity comment);
         Task UpdateAsync(CommentEntity comment);
-        Task<CommentEntity> GetByIdAsync(Guid commentId);
+        Task<CommentEntity?> GetByIdAsync(Guid commentId);
         Task DeleteAsync(Guid commentId);
     }
 }
