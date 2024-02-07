@@ -2,7 +2,7 @@
 
 namespace Microservices.Posts.Queries.Api.Queries
 {
-    public class FindPostByAuthorQuery : BaseQuery
+    public class FindPostsByAuthorQuery : BaseQuery
     {
         public string Author{ get; set; }
     }

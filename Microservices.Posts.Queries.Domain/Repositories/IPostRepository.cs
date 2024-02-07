@@ -10,7 +10,7 @@ namespace Microservices.Posts.Queries.Domain.Repositories
 
         Task<PostEntity> GetByIdAsync(Guid postId);
         Task<List<PostEntity>> ListAllAsync();
-        Task<List<PostEntity>> ListByAuhtorAsync(string author);
+        Task<List<PostEntity>> ListByAuthorAsync(string author);
         Task<List<PostEntity>> ListWithLikesAsync(int numberOfLikes);
         Task<List<PostEntity>> ListWithCommentsAsync();
     }

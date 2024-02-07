@@ -49,11 +49,6 @@ namespace Microservices.Posts.Queries.Infrastructure.Repositories
                     .ToListAsync();
         }
 
-        public Task<List<PostEntity>> ListByAuhtorAsync(string author)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<PostEntity>> ListByAuthorAsync(string author)
         {
             using DatabaseContext context = _contextFactory.CreateDbContext();
