@@ -7,12 +7,24 @@ using Microservices.Posts.Commands.Infrastructure.Handlers;
 using Microservices.Posts.Commands.Infrastructure.Producers;
 using Microservices.Posts.Commands.Infrastructure.Repositories;
 using Microservices.Posts.Commands.Infrastructure.Stores;
+using Microservices.Posts.Common.Events;
 using Microservices.Posts.CQRS.Domain;
+using Microservices.Posts.CQRS.Events;
 using Microservices.Posts.CQRS.Handlers;
 using Microservices.Posts.CQRS.Infrastructure;
 using Microservices.Posts.CQRS.Producers;
+using MongoDB.Bson.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+BsonClassMap.RegisterClassMap<BaseEvent>();
+BsonClassMap.RegisterClassMap<PostCreatedEvent>();
+BsonClassMap.RegisterClassMap<MessageUpdatedEvent>();
+BsonClassMap.RegisterClassMap<PostLikedEvent>();
+BsonClassMap.RegisterClassMap<CommentAddedEvent>();
+BsonClassMap.RegisterClassMap<CommentUpdatedEvent>();
+BsonClassMap.RegisterClassMap<CommentRemovedEvent>();
+BsonClassMap.RegisterClassMap<PostRemovedEvent>();
 
 builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
 builder.Services.Configure<ProducerConfig>(builder.Configuration.GetSection(nameof(ProducerConfig)));
