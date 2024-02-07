@@ -5,7 +5,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "KAFKA_TOPIC": "SocialMediaPostEvents"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5287"
@@ -15,10 +16,11 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "KAFKA_TOPIC": "SocialMediaPostEvents"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7041;http://localhost:5287"
+      "applicationUrl": "https://localhost:7041"
     },
     "IIS Express": {
       "commandName": "IISExpress",

@@ -20,7 +20,7 @@ namespace Microservices.Posts.Commands.Api.Controllers
             _commandDispatcher = commandDispatcher;
         }
 
-        [HttpPost]
+        [HttpPost()]
         public async Task<ActionResult> NewPostAsync(NewPostCommand command)
         {
             var id = Guid.NewGuid();

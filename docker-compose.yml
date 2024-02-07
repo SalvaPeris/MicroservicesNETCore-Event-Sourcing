@@ -11,4 +11,14 @@ services:
     build:
       context: .
       dockerfile: Microservices.Posts.Queries.Api/Dockerfile
+  command-db:
+    image: mongo
+  sqlserver-db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
 
+volumes:
+  mongo_data:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
