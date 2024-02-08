@@ -7,6 +7,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ASPNETCORE_ENVIRONMENT_DATABASE=Development.PostgreSQL
+      - KAFKA_TOPIC=SocialMediaPostEvents
     ports:
       - "8080"
       - "8081"
@@ -19,6 +20,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ASPNETCORE_ENVIRONMENT_DATABASE=Development.PostgreSQL
+      - KAFKA_TOPIC=SocialMediaPostEvents
     ports:
       - "8080"
       - "8081"
@@ -29,9 +31,9 @@ services:
   postgresdb:
     container_name: postgresdb
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin1234
-      - POSTGRES_DB=PostDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     restart: always
     ports:
       - "5432:5432"
@@ -59,7 +61,7 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
     depends_on:
       - zookeeper
 
