@@ -41,6 +41,7 @@
       "environmentVariables": {
         "ASPNETCORE_HTTPS_PORTS": "8081",
         "ASPNETCORE_HTTP_PORTS": "8080",
+        "ASPNETCORE_ENVIRONMENT_DATABASE": "Development.PostgreSQL",
         "KAFKA_TOPIC": "SocialMediaPostEvents"
       },
       "publishAllPorts": true,
