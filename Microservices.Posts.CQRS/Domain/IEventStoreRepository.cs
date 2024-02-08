@@ -6,5 +6,6 @@ namespace Microservices.Posts.CQRS.Domain
     {
         Task SaveAsync(EventModel @event);
         Task<ICollection<EventModel>> FindByAggregateIdAsync(Guid aggregateId);
+        Task<List<EventModel>> FindAllAsync();
     }
 }

@@ -6,5 +6,6 @@ namespace Microservices.Posts.CQRS.Handlers
     {
         Task SaveAsync(AggregateRoot aggregate);
         Task<T> GetByIdAsync(Guid aggregateId);
+        Task RepublishEventsAsync();
     }
 }

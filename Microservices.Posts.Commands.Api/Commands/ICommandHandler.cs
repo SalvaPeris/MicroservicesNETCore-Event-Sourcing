@@ -9,5 +9,7 @@
         Task HandleAsync(EditCommentCommand comand);
         Task HandleAsync(RemoveCommentCommand comand);
         Task HandleAsync(DeletePostCommand comand);
+        Task HandleAsync(RestoreReadDbCommand command);
+
     }
 }

@@ -18,6 +18,16 @@ namespace Microservices.Posts.Commands.Infrastructure.Stores
             _eventProducer = eventProducer;
         }
 
+        public async Task<List<Guid>> GetAggregateIdsAsync()
+        {
+            var eventStream = await _eventStoreRepository.FindAllAsync();
+
+            if (eventStream == null || !eventStream.Any())
+                throw new ArgumentNullException(nameof(eventStream), "Could not retrieve event stream from the event store!");
+
+            return eventStream.Select(x => x.AggregateIdentifier).Distinct().ToList();
+        }
+
         public async Task<ICollection<BaseEvent?>> GetEventsAsync(Guid aggregateId)
         {
             var eventStream = await _eventStoreRepository.FindByAggregateIdAsync(aggregateId);

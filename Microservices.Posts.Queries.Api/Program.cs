@@ -15,10 +15,13 @@ using EventHandler = Microservices.Posts.Queries.Infrastructure.Handlers.EventHa
 
 var builder = WebApplication.CreateBuilder(args);
 
-Action<DbContextOptionsBuilder> configureDbContext = o =>
-{
-    o.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
-};
+var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT_DATABASE");
+Action<DbContextOptionsBuilder> configureDbContext;
+if (env.Equals("Development.PostgreSQL"))
+    configureDbContext = o => { o.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")); };
+else
+    configureDbContext = o => { o.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("SQLServer")); };
+
 
 builder.Services.AddDbContext<DatabaseContext>(configureDbContext);
 builder.Services.AddSingleton<DatabaseContextFactory>(new DatabaseContextFactory(configureDbContext));
