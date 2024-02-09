@@ -5,21 +5,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Microservices.Posts.Queries.Infrastructure.Repositories
 {
-    public class PostRepository : IPostRepository
+    public class PostRepository(DatabaseContextFactory contextFactory) : IPostRepository
     {
-        private readonly DatabaseContextFactory _contextFactory;
-
-        public PostRepository(DatabaseContextFactory contextFactory)
-        {
-            _contextFactory = contextFactory;
-        }
+        private readonly DatabaseContextFactory _contextFactory = contextFactory;
 
         public async Task CreateAsync(PostEntity post)
         {
-            using DatabaseContext context = _contextFactory.CreateDbContext();
-            context.Posts.Add(post);
+            try
+            {
+                using DatabaseContext context = _contextFactory.CreateDbContext();
+                await context.Posts.AddAsync(post);
 
-            _ = await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
         }
 
         public async Task DeleteAsync(Guid postId)
@@ -30,7 +33,7 @@ namespace Microservices.Posts.Queries.Infrastructure.Repositories
             if (post == null) return;
 
             context.Posts.Remove(post);
-            _ = await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
 
         public async Task<PostEntity> GetByIdAsync(Guid postId)
@@ -44,9 +47,11 @@ namespace Microservices.Posts.Queries.Infrastructure.Repositories
         public async Task<List<PostEntity>> ListAllAsync()
         {
             using DatabaseContext context = _contextFactory.CreateDbContext();
-            return await context.Posts.AsNoTracking()
+            var posts = await context.Posts.AsNoTracking()
                     .Include(p => p.Comments).AsNoTracking()
                     .ToListAsync();
+
+            return posts;
         }
 
         public async Task<List<PostEntity>> ListByAuthorAsync(string author)
@@ -63,7 +68,7 @@ namespace Microservices.Posts.Queries.Infrastructure.Repositories
             using DatabaseContext context = _contextFactory.CreateDbContext();
             return await context.Posts.AsNoTracking()
                     .Include(p => p.Comments).AsNoTracking()
-                    .Where(x => x.Comments != null && x.Comments.Any())
+                    .Where(x => x.Comments != null && x.Comments.Count() > 0)
                     .ToListAsync();
         }
 
@@ -81,7 +86,7 @@ namespace Microservices.Posts.Queries.Infrastructure.Repositories
             using DatabaseContext context = _contextFactory.CreateDbContext();
             context.Posts.Update(post);
 
-            _ = await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
     }
 }

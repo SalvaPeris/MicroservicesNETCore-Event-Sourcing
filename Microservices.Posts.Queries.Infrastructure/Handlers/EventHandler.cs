@@ -4,16 +4,10 @@ using Microservices.Posts.Queries.Domain.Repositories;
 
 namespace Microservices.Posts.Queries.Infrastructure.Handlers
 {
-    public class EventHandler : IEventHandler
+    public class EventHandler(IPostRepository postRepository, ICommentRepository commentRepository) : IEventHandler
     {
-        private readonly IPostRepository _postRepository;
-        private readonly ICommentRepository _commentRepository;
-
-        public EventHandler(IPostRepository postRepository, ICommentRepository commentRepository)
-        {
-            _postRepository = postRepository;
-            _commentRepository = commentRepository;
-        }
+        private readonly IPostRepository _postRepository = postRepository;
+        private readonly ICommentRepository _commentRepository = commentRepository;
 
         public async Task On(PostCreatedEvent @event)
         {

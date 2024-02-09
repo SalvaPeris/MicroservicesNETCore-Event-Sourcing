@@ -8,16 +8,10 @@ using System.Text.Json;
 
 namespace Microservices.Posts.Queries.Infrastructure.Consumers
 {
-    public class EventConsumer : IEventConsumer
+    public class EventConsumer(IOptions<ConsumerConfig> config, IEventHandler eventHandler) : IEventConsumer
     {
-        private readonly ConsumerConfig _config;
-        private readonly IEventHandler _eventHandler;
-
-        public EventConsumer(IOptions<ConsumerConfig> config, IEventHandler eventHandler)
-        {
-            _config = config.Value;
-            _eventHandler = eventHandler;
-        }
+        private readonly ConsumerConfig _config = config.Value;
+        private readonly IEventHandler _eventHandler = eventHandler;
 
         public void Consume(string topic)
         {
@@ -37,7 +31,7 @@ namespace Microservices.Posts.Queries.Infrastructure.Consumers
                 var options = new JsonSerializerOptions { Converters = { new EventJsonConverter() } };
                 var @event = JsonSerializer.Deserialize<BaseEvent>(consumerResult.Message.Value, options);
 
-                var handlerMethod = _eventHandler.GetType().GetMethod("On", new Type[] { @event.GetType() });
+                var handlerMethod = _eventHandler.GetType().GetMethod("On", [@event.GetType()]);
 
                 if (handlerMethod == null)
                 {

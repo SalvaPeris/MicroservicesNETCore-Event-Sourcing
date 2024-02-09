@@ -6,7 +6,7 @@ namespace Microservices.Posts.Queries.Infrastructure.Dispatchers
 {
     public class QueryDispatcher : IQueryDispatcher<PostEntity>
     {
-        private readonly Dictionary<Type, Func<BaseQuery, Task<List<PostEntity>>>> _handlers = new();
+        private readonly Dictionary<Type, Func<BaseQuery, Task<List<PostEntity>>>> _handlers = [];
 
         public void RegisterHandler<TQuery>(Func<TQuery, Task<List<PostEntity>>> handler) where TQuery : BaseQuery
         {

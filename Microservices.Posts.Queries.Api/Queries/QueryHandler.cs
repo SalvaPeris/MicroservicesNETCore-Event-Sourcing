@@ -3,14 +3,9 @@ using Microservices.Posts.Queries.Domain.Repositories;
 
 namespace Microservices.Posts.Queries.Api.Queries
 {
-    public class QueryHandler : IQueryHandler
+    public class QueryHandler(IPostRepository postRepository) : IQueryHandler
     {
-        private readonly IPostRepository _postRepository;
-
-        public QueryHandler(IPostRepository postRepository)
-        {
-            _postRepository = postRepository;
-        }
+        private readonly IPostRepository _postRepository = postRepository;
 
         public async Task<List<PostEntity>> HandleAsync(FindAllPostsQuery query)
         {
@@ -20,7 +15,7 @@ namespace Microservices.Posts.Queries.Api.Queries
         public async Task<List<PostEntity>> HandleAsync(FindPostByIdQuery query)
         {
             var post = await _postRepository.GetByIdAsync(query.Id);
-            return new List<PostEntity> { post };
+            return [post];
         }
 
         public async Task<List<PostEntity>> HandleAsync(FindPostsByAuthorQuery query)

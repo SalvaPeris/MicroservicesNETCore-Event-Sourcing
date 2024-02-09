@@ -13,7 +13,7 @@ services:
       dockerfile: Microservices.Posts.Queries.Api/Dockerfile
   
   postgresdb:
-    image: postgres:alpine
+    image: postgres
 
   zookeeper:
     image: bitnami/zookeeper

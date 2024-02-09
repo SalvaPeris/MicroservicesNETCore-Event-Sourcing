@@ -7,16 +7,10 @@ namespace Microservices.Posts.Commands.Api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class RestoreReadDbController : ControllerBase
+    public class RestoreReadDbController(ILogger<RestoreReadDbController> logger, ICommandDispatcher commandDispatcher) : ControllerBase
     {
-        private readonly ILogger<RestoreReadDbController> _logger;
-        private readonly ICommandDispatcher _commandDispatcher;
-
-        public RestoreReadDbController(ILogger<RestoreReadDbController> logger, ICommandDispatcher commandDispatcher)
-        {
-            _logger = logger;
-            _commandDispatcher = commandDispatcher;
-        }
+        private readonly ILogger<RestoreReadDbController> _logger = logger;
+        private readonly ICommandDispatcher _commandDispatcher = commandDispatcher;
 
         [HttpPost]
         public async Task<ActionResult> RestoreReadDbAsync()

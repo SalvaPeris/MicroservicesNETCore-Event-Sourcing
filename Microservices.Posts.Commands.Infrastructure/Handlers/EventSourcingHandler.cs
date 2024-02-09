@@ -6,23 +6,17 @@ using Microservices.Posts.CQRS.Producers;
 
 namespace Microservices.Posts.Commands.Infrastructure.Handlers
 {
-    public class EventSourcingHandler : IEventSourcingHandler<PostAggregate>
+    public class EventSourcingHandler(IEventStore eventStore, IEventProducer eventProducer) : IEventSourcingHandler<PostAggregate>
     {
-        private readonly IEventStore _eventStore;
-        private readonly IEventProducer _eventProducer;
-
-        public EventSourcingHandler(IEventStore eventStore, IEventProducer eventProducer)
-        {
-            _eventStore = eventStore;
-            _eventProducer = eventProducer;
-        }
+        private readonly IEventStore _eventStore = eventStore;
+        private readonly IEventProducer _eventProducer = eventProducer;
 
         public async Task<PostAggregate> GetByIdAsync(Guid aggregateId)
         {
             var aggregate = new PostAggregate();
             var events = await _eventStore.GetEventsAsync(aggregateId);
 
-            if (events == null || !events.Any())
+            if (events == null || events.Count > 0)
                 return aggregate;
 
             aggregate.ReplayEvents(events);
@@ -35,7 +29,7 @@ namespace Microservices.Posts.Commands.Infrastructure.Handlers
         {
             var aggregateIds = await _eventStore.GetAggregateIdsAsync();
 
-            if (aggregateIds == null || !aggregateIds.Any()) return;
+            if (aggregateIds == null || aggregateIds.Count > 0) return;
             
             foreach ( var aggregateId in aggregateIds)
             {

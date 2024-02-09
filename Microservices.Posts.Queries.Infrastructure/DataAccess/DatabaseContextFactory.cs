@@ -2,14 +2,9 @@
 
 namespace Microservices.Posts.Queries.Infrastructure.DataAccess
 {
-    public class DatabaseContextFactory
+    public class DatabaseContextFactory(Action<DbContextOptionsBuilder> configureDbContext)
     {
-        private readonly Action<DbContextOptionsBuilder> _configureDbContext;
-
-        public DatabaseContextFactory(Action<DbContextOptionsBuilder> configureDbContext)
-        {
-            _configureDbContext = configureDbContext;
-        }
+        private readonly Action<DbContextOptionsBuilder> _configureDbContext = configureDbContext;
 
         public DatabaseContext CreateDbContext()
         {

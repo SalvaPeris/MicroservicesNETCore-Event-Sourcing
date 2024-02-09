@@ -13,6 +13,7 @@ using Microservices.Posts.CQRS.Events;
 using Microservices.Posts.CQRS.Handlers;
 using Microservices.Posts.CQRS.Infrastructure;
 using Microservices.Posts.CQRS.Producers;
+using Microservices.Posts.Queries.Domain.Entities;
 using MongoDB.Bson.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);

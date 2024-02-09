@@ -22,7 +22,7 @@ if (env.Equals("Development.PostgreSQL"))
 else
     configureDbContext = o => { o.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("SQLServer")); };
 
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 builder.Services.AddDbContext<DatabaseContext>(configureDbContext);
 builder.Services.AddSingleton<DatabaseContextFactory>(new DatabaseContextFactory(configureDbContext));
 

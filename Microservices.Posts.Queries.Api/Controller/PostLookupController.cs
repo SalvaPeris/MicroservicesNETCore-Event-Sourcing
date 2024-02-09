@@ -9,16 +9,10 @@ namespace Microservices.Posts.Queries.Api.Controller
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class PostLookupController : ControllerBase
+    public class PostLookupController(ILogger<PostLookupController> logger, IQueryDispatcher<PostEntity> queryDispatcher) : ControllerBase
     {
-        private readonly ILogger<PostLookupController> _logger;
-        private readonly IQueryDispatcher<PostEntity> _queryDispatcher;
-
-        public PostLookupController(ILogger<PostLookupController> logger, IQueryDispatcher<PostEntity> queryDispatcher)
-        {
-            _logger = logger;
-            _queryDispatcher = queryDispatcher;
-        }
+        private readonly ILogger<PostLookupController> _logger = logger;
+        private readonly IQueryDispatcher<PostEntity> _queryDispatcher = queryDispatcher;
 
         [HttpGet]
         public async Task<ActionResult> GetAllPostsAsync()
@@ -42,7 +36,7 @@ namespace Microservices.Posts.Queries.Api.Controller
             {
                 var posts = await _queryDispatcher.SendAsync(new FindPostByIdQuery { Id = postId });
 
-                if (posts == null || !posts.Any())
+                if (posts == null || posts.Count > 0)
                     return NoContent();
 
                 return Ok(new PostLookupResponse
@@ -105,7 +99,7 @@ namespace Microservices.Posts.Queries.Api.Controller
 
         private ActionResult NormalResponse(List<PostEntity> posts)
         {
-            if (posts == null || !posts.Any())
+            if (posts == null || posts.Count > 0)
                 return NoContent();
 
             var count = posts.Count;
