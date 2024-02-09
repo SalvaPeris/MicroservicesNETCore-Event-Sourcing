@@ -16,7 +16,7 @@ namespace Microservices.Posts.Commands.Infrastructure.Handlers
             var aggregate = new PostAggregate();
             var events = await _eventStore.GetEventsAsync(aggregateId);
 
-            if (events == null || events.Count > 0)
+            if (events == null || events.Count == 0)
                 return aggregate;
 
             aggregate.ReplayEvents(events);
@@ -29,7 +29,7 @@ namespace Microservices.Posts.Commands.Infrastructure.Handlers
         {
             var aggregateIds = await _eventStore.GetAggregateIdsAsync();
 
-            if (aggregateIds == null || aggregateIds.Count > 0) return;
+            if (aggregateIds == null || aggregateIds.Count == 0) return;
             
             foreach ( var aggregateId in aggregateIds)
             {

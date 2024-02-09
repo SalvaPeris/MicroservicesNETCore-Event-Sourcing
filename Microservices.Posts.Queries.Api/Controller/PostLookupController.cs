@@ -36,7 +36,7 @@ namespace Microservices.Posts.Queries.Api.Controller
             {
                 var posts = await _queryDispatcher.SendAsync(new FindPostByIdQuery { Id = postId });
 
-                if (posts == null || posts.Count > 0)
+                if (posts == null || posts.Count == 0)
                     return NoContent();
 
                 return Ok(new PostLookupResponse
@@ -99,7 +99,7 @@ namespace Microservices.Posts.Queries.Api.Controller
 
         private ActionResult NormalResponse(List<PostEntity> posts)
         {
-            if (posts == null || posts.Count > 0)
+            if (posts == null || posts.Count == 0)
                 return NoContent();
 
             var count = posts.Count;

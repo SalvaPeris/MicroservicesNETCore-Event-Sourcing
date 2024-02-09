@@ -16,7 +16,7 @@ namespace Microservices.Posts.Commands.Infrastructure.Stores
         {
             var eventStream = await _eventStoreRepository.FindAllAsync();
 
-            if (eventStream == null || eventStream.Count > 0)
+            if (eventStream == null || eventStream.Count == 0)
                 throw new ArgumentNullException(nameof(eventStream), "Could not retrieve event stream from the event store!");
 
             return eventStream.Select(x => x.AggregateIdentifier).Distinct().ToList();
