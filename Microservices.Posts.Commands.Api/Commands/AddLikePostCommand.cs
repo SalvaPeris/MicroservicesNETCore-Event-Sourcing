@@ -2,7 +2,7 @@
 
 namespace Microservices.Posts.Commands.Api.Commands
 {
-    public class LikePostCommand : BaseCommand
+    public class AddLikePostCommand : BaseCommand
     {
 
     }

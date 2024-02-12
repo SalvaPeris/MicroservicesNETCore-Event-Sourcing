@@ -1,4 +1,5 @@
 ﻿using Microservices.Posts.Commands.Domain.Aggregates;
+using Microservices.Posts.Common.Events;
 using Microservices.Posts.CQRS.Domain;
 using Microservices.Posts.CQRS.Handlers;
 using Microservices.Posts.CQRS.Infrastructure;
@@ -18,6 +19,8 @@ namespace Microservices.Posts.Commands.Infrastructure.Handlers
 
             if (events == null || events.Count == 0)
                 return aggregate;
+
+            aggregate.Likes = events.Where(e => e.Type == nameof(PostLikedEvent)).Count() - events.Where(e => e.Type == nameof(PostNotLikedEvent)).Count();
 
             aggregate.ReplayEvents(events);
             aggregate.Version = events.Select(x => x.Version).Max();

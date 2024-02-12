@@ -13,7 +13,6 @@ using Microservices.Posts.CQRS.Events;
 using Microservices.Posts.CQRS.Handlers;
 using Microservices.Posts.CQRS.Infrastructure;
 using Microservices.Posts.CQRS.Producers;
-using Microservices.Posts.Queries.Domain.Entities;
 using MongoDB.Bson.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +21,7 @@ BsonClassMap.RegisterClassMap<BaseEvent>();
 BsonClassMap.RegisterClassMap<PostCreatedEvent>();
 BsonClassMap.RegisterClassMap<MessageUpdatedEvent>();
 BsonClassMap.RegisterClassMap<PostLikedEvent>();
+BsonClassMap.RegisterClassMap<PostNotLikedEvent>();
 BsonClassMap.RegisterClassMap<CommentAddedEvent>();
 BsonClassMap.RegisterClassMap<CommentUpdatedEvent>();
 BsonClassMap.RegisterClassMap<CommentRemovedEvent>();
@@ -42,7 +42,8 @@ var dispatcher = new CommandDispatcher();
 
 dispatcher.RegisterHandler<NewPostCommand>(commandHandler.HandleAsync);
 dispatcher.RegisterHandler<EditMessageCommand>(commandHandler.HandleAsync);
-dispatcher.RegisterHandler<LikePostCommand>(commandHandler.HandleAsync);
+dispatcher.RegisterHandler<AddLikePostCommand>(commandHandler.HandleAsync);
+dispatcher.RegisterHandler<RemoveLikePostCommand>(commandHandler.HandleAsync);
 dispatcher.RegisterHandler<AddCommentCommand>(commandHandler.HandleAsync);
 dispatcher.RegisterHandler<EditCommentCommand>(commandHandler.HandleAsync);
 dispatcher.RegisterHandler<RemoveCommentCommand>(commandHandler.HandleAsync);

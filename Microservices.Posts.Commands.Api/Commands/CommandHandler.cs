@@ -27,10 +27,18 @@ namespace Microservices.Posts.Commands.Api.Commands
             await _eventSourcingHandler.SaveAsync(aggregate);
         }
 
-        public async Task HandleAsync(LikePostCommand command)
+        public async Task HandleAsync(AddLikePostCommand command)
         {
             var aggregate = await _eventSourcingHandler.GetByIdAsync(command.Id);
-            aggregate.LikePost();
+            aggregate.AddLikePost();
+
+            await _eventSourcingHandler.SaveAsync(aggregate);
+        }
+
+        public async Task HandleAsync(RemoveLikePostCommand command)
+        {
+            var aggregate = await _eventSourcingHandler.GetByIdAsync(command.Id);
+            aggregate.RemoveLikePost();
 
             await _eventSourcingHandler.SaveAsync(aggregate);
         }

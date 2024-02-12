@@ -1,17 +1,24 @@
 ﻿using Microservices.Posts.Common.Events;
 using Microservices.Posts.CQRS.Domain;
+using ZstdSharp.Unsafe;
 
 namespace Microservices.Posts.Commands.Domain.Aggregates
 {
     public class PostAggregate : AggregateRoot
     {
         private bool _active;
+        private int _likes;
         private string? _author;
         private readonly Dictionary<Guid, Tuple<string, string>> _comments = new();
 
         public bool Active 
         {
             get => _active; set => _active = value;
+        }
+
+        public int Likes
+        {
+            get => _likes; set => _likes = value;
         }
 
         public PostAggregate()
@@ -57,7 +64,7 @@ namespace Microservices.Posts.Commands.Domain.Aggregates
             _id = @event.Id;
         }
 
-        public void LikePost()
+        public void AddLikePost()
         {
             if (!_active)
             {
@@ -68,6 +75,26 @@ namespace Microservices.Posts.Commands.Domain.Aggregates
         }
 
         public void Apply(PostLikedEvent @event)
+        {
+            _id = @event.Id;
+        }
+
+        public void RemoveLikePost()
+        {
+            if (!_active)
+            {
+                throw new InvalidOperationException("You cannot like an inactive post");
+            }
+
+            if (_likes <= 0)
+            {
+                throw new InvalidOperationException("You cannot remove like in post with empty likes");
+            }
+
+            RaiseEvent(new PostNotLikedEvent { Id = _id });
+        }
+
+        public void Apply(PostNotLikedEvent @event)
         {
             _id = @event.Id;
         }

@@ -8,12 +8,12 @@ namespace Microservices.Posts.Commands.Api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class LikePostController : ControllerBase
+    public class AddLikePostController : ControllerBase
     {
-        private readonly ILogger<LikePostController> _logger;
+        private readonly ILogger<AddLikePostController> _logger;
         private readonly ICommandDispatcher _commandDispatcher;
 
-        public LikePostController(ILogger<LikePostController> logger, ICommandDispatcher commandDispatcher)
+        public AddLikePostController(ILogger<AddLikePostController> logger, ICommandDispatcher commandDispatcher)
         {
             _logger = logger;
             _commandDispatcher = commandDispatcher;
@@ -24,7 +24,7 @@ namespace Microservices.Posts.Commands.Api.Controllers
         {
             try
             {
-                await _commandDispatcher.SendAsync(new LikePostCommand { Id = id });
+                await _commandDispatcher.SendAsync(new AddLikePostCommand { Id = id });
 
                 return Ok(new BaseResponse
                 {

@@ -42,6 +42,16 @@ namespace Microservices.Posts.Queries.Infrastructure.Handlers
             await _postRepository.UpdateAsync(post);
         }
 
+        public async Task On(PostNotLikedEvent @event)
+        {
+            var post = await _postRepository.GetByIdAsync(@event.Id);
+
+            if (post == null) return;
+
+            post.Likes--;
+            await _postRepository.UpdateAsync(post);
+        }
+
         public async Task On(CommentAddedEvent @event)
         {
             var comment = new CommentEntity

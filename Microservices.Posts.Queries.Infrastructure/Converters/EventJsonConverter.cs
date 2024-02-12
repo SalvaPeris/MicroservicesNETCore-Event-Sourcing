@@ -32,6 +32,7 @@ namespace Microservices.Posts.Queries.Infrastructure.Converters
                 nameof(PostCreatedEvent) => JsonSerializer.Deserialize<PostCreatedEvent>(json, options),
                 nameof(MessageUpdatedEvent) => JsonSerializer.Deserialize<MessageUpdatedEvent>(json, options),
                 nameof(PostLikedEvent) => JsonSerializer.Deserialize<PostLikedEvent>(json, options),
+                nameof(PostNotLikedEvent) => JsonSerializer.Deserialize<PostNotLikedEvent>(json, options),
                 nameof(CommentAddedEvent) => JsonSerializer.Deserialize<CommentAddedEvent>(json, options),
                 nameof(CommentRemovedEvent) => JsonSerializer.Deserialize<CommentRemovedEvent>(json, options),
                 nameof(CommentUpdatedEvent) => JsonSerializer.Deserialize<CommentUpdatedEvent>(json, options),

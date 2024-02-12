@@ -4,7 +4,8 @@
     {
         Task HandleAsync(NewPostCommand comand);
         Task HandleAsync(EditMessageCommand comand);
-        Task HandleAsync(LikePostCommand comand);
+        Task HandleAsync(AddLikePostCommand comand);
+        Task HandleAsync(RemoveLikePostCommand comand);
         Task HandleAsync(AddCommentCommand comand);
         Task HandleAsync(EditCommentCommand comand);
         Task HandleAsync(RemoveCommentCommand comand);
