@@ -16,5 +16,5 @@ Open terminal where is docker-compose.yml file and execute this command:
 - Replay the event store to recreate the entire read database.
 - Replay the event store to recreate the entire read database into a different database type - PostgreSQL.
 
-- ![{1EB535C0-49C2-4FD0-8867-E0A109BFAE8F}](https://github.com/user-attachments/assets/39610ed8-0f8f-45f7-a11c-bb35b45f0f44)
+![{1EB535C0-49C2-4FD0-8867-E0A109BFAE8F}](https://github.com/user-attachments/assets/39610ed8-0f8f-45f7-a11c-bb35b45f0f44)
 
